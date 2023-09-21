@@ -21,19 +21,28 @@ const createUser = z.object({
     token: z.string().optional()
   })
 });
+
 const updateUser = z.object({
-  body: z.object({
-    password: z.string().optional(),
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    dateOfBirth: z.string().optional(),
-    gender: z.string().optional(),
-    email: z.string().email().optional(),
-    contactNo: z.string().optional(),
-    emergencyContactNo: z.string().optional(),
-    presentAddress: z.string().optional(),
-    permanentAddress: z.string().optional()
-  })
+  password: z.string().optional(),
+  firstName: z.string().optional(),
+  middleName: z.string().optional(),
+  lastName: z.string().optional(),
+  dateOfBirth: z.string().optional(),
+  gender: z.string().optional(),
+  email: z.string().email().optional(),
+  contactNo: z.string().optional(),
+  emergencyContactNo: z.string().optional(),
+  presentAddress: z.string().optional(),
+  permanentAddress: z.string().optional(),
+  profileImage: z.string().optional(),
+  shopName: z.string().optional(),
+  shopContactNo: z.string().optional(),
+  country: z.string().optional(),
+  division: z.string().optional(),
+  district: z.string().optional(),
+  area: z.string().optional(),
+  nidNumber: z.string().optional(),
+  treadLicenseNo: z.string().optional()
 });
 
 export const UserValidation = {

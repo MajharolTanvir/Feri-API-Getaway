@@ -13,6 +13,15 @@ const createUser = async (req: Request) => {
   return response;
 };
 
+const loginUser = async (req: Request) => {
+  const response: IGenericResponse = await authService.post('/users/login', req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 const userProfile = async (req: Request) => {
   const file = req.file as IUploadFile;
   const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
@@ -21,7 +30,7 @@ const userProfile = async (req: Request) => {
     req.body.profileImage = uploadedImage.secure_url;
   }
 
-  const response: IGenericResponse = await authService.post('/users', req.body, {
+  const response: IGenericResponse = await authService.patch('/users/profile', req.body, {
     headers: {
       Authorization: req.headers.authorization
     }
@@ -30,7 +39,32 @@ const userProfile = async (req: Request) => {
   return response;
 };
 
+const forgetPassword = async (req: Request) => {
+  const response: IGenericResponse = await authService.post('/users/forget-password', req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
+const resetPassword = async (req: Request) => {
+  const response: IGenericResponse = await authService.post(
+    `/users/reset-password/?token=${req.query.token}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
 export const UserService = {
   createUser,
-  userProfile
+  loginUser,
+  userProfile,
+  forgetPassword,
+  resetPassword
 };
