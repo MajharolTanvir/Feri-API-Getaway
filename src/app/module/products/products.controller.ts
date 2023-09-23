@@ -1,22 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Request, Response } from 'express'
-import catchAsync from '../../../shared/catchAsync'
-import { ProductService } from './products.services'
-import sendResponse from '../../../shared/sendResponse'
-import httpStatus from 'http-status'
+import { NextFunction, Request, Response } from 'express';
+import { ProductService } from './products.services';
+import sendResponse from '../../../shared/response';
 
-const createProduct = catchAsync(async (req: Request, res: Response) => {
-  const user = (req as any).user
-  const result = await ProductService.createProduct(user.userEmail, req.body)
+const createProduct = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductService.createProduct(req);
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Product create successfully',
-    data: result,
-  })
-})
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const ProductController = {
-  createProduct,
-}
+  createProduct
+};

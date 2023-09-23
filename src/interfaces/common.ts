@@ -18,3 +18,5 @@ export interface IGenericErrorResponse {
     message: string;
   }[];
 }
+
+export const display = ['Show', 'Hidden'];

@@ -26,7 +26,7 @@ export type ICloudinaryResponse = {
   etag: string;
   placeholder: boolean;
   url: string;
-  secure_url: string;
+  secure_url: string[];
   folder: string;
   overwritten: boolean;
   original_filename: string;
