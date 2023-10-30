@@ -18,4 +18,17 @@ router.post(
   }
 );
 
+router.get('/', ProductController.getAllProducts);
+router.get('/:id', ProductController.getSingleProduct);
+router.patch(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SELLER),
+  ProductController.updateProduct
+);
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SELLER),
+  ProductController.deleteProduct
+);
+
 export const ProductRouter = router;

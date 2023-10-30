@@ -13,6 +13,50 @@ const createProduct = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductService.getAllProducts(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getSingleProduct = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductService.getSingleProduct(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateProduct = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductService.updateProduct(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ProductService.deleteProduct(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const ProductController = {
-  createProduct
+  createProduct,
+  getAllProducts,
+  getSingleProduct,
+  updateProduct,
+  deleteProduct
 };

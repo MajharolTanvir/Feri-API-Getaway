@@ -18,6 +18,51 @@ const createProduct = async (req: Request) => {
   return response;
 };
 
+const getAllProducts = async (req: Request) => {
+  const response: IGenericResponse = await coreService.get(`/products`, {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
+const getSingleProduct = async (req: Request) => {
+  const response: IGenericResponse = await coreService.get(`/products/${req.params.id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
+const updateProduct = async (req: Request) => {
+  const response: IGenericResponse = await coreService.patch(
+    `/products/${req.params.id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
+const deleteProduct = async (req: Request) => {
+  const response: IGenericResponse = await coreService.delete(`/products/${req.params.id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 export const ProductService = {
-  createProduct
+  createProduct,
+  getAllProducts,
+  getSingleProduct,
+  updateProduct,
+  deleteProduct
 };
