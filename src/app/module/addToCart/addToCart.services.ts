@@ -3,7 +3,7 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { coreService } from '../../../shared/axios';
 
 const createAddToCart = async (req: Request) => {
-  const response: IGenericResponse = await coreService.post(`/`, req.body, {
+  const response: IGenericResponse = await coreService.post(`/add-to-cart`, req.body, {
     headers: {
       Authorization: req.headers.authorization
     }
@@ -12,7 +12,7 @@ const createAddToCart = async (req: Request) => {
 };
 
 const getAddToCart = async (req: Request) => {
-  const response: IGenericResponse = await coreService.get(`/`, {
+  const response: IGenericResponse = await coreService.get(`/add-to-cart`, {
     headers: {
       Authorization: req.headers.authorization
     }
@@ -21,7 +21,7 @@ const getAddToCart = async (req: Request) => {
 };
 
 const deleteAddToCart = async (req: Request) => {
-  const response: IGenericResponse = await coreService.delete(`/:id`, {
+  const response: IGenericResponse = await coreService.delete(`/add-to-cart/${req.params.id}`, {
     headers: {
       Authorization: req.headers.authorization
     }

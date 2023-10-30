@@ -7,6 +7,8 @@ import { SizesRouter } from '../module/size/size.router';
 import { WeightRouter } from '../module/weight/weight.router';
 import { TagsRouter } from '../module/tags/tags.router';
 import { ProductRouter } from '../module/products/products.router';
+import { AddToCartRouter } from '../module/addToCart/addToCart.Router';
+import { BookingRouter } from '../module/booking/booking.router';
 
 const router = express.Router();
 
@@ -42,7 +44,19 @@ const moduleRoutes = [
   {
     path: '/products',
     route: ProductRouter
+  },
+  {
+    path: '/add-to-cart',
+    route: AddToCartRouter
+  },
+  {
+    path: '/bookings',
+    route: BookingRouter
   }
+  // {
+  //   path: '/reviews',
+  //   route: ReviewRouter
+  // }
 ];
 
 moduleRoutes.forEach((route) => {
