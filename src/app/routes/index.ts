@@ -9,6 +9,7 @@ import { TagsRouter } from '../module/tags/tags.router';
 import { ProductRouter } from '../module/products/products.router';
 import { AddToCartRouter } from '../module/addToCart/addToCart.Router';
 import { BookingRouter } from '../module/booking/booking.router';
+import { ReviewsRouter } from '../module/review/review.router';
 
 const router = express.Router();
 
@@ -52,11 +53,11 @@ const moduleRoutes = [
   {
     path: '/bookings',
     route: BookingRouter
+  },
+  {
+    path: '/reviews',
+    route: ReviewsRouter
   }
-  // {
-  //   path: '/reviews',
-  //   route: ReviewRouter
-  // }
 ];
 
 moduleRoutes.forEach((route) => {
