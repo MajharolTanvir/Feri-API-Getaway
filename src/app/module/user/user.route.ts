@@ -8,6 +8,11 @@ import validateRequest from '../../middlewares/validateRequest';
 
 const router = express.Router();
 router.post('/signup', validateRequest(UserValidation.createUser), UserController.createUser);
+router.post(
+  '/confirm-signup',
+  validateRequest(UserValidation.createUser),
+  UserController.confirmUser
+);
 router.post('/login', UserController.loginUser);
 router.patch(
   '/profile',

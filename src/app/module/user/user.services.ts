@@ -13,6 +13,15 @@ const createUser = async (req: Request) => {
   return response;
 };
 
+const confirmUser = async (req: Request) => {
+  const response: IGenericResponse = await authService.post('/users/confirm-signup', req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 const loginUser = async (req: Request) => {
   const response: IGenericResponse = await authService.post('/users/login', req.body, {
     headers: {
@@ -66,5 +75,6 @@ export const UserService = {
   loginUser,
   userProfile,
   forgetPassword,
-  resetPassword
+  resetPassword,
+  confirmUser
 };

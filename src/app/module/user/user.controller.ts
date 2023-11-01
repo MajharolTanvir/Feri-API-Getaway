@@ -12,6 +12,16 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const confirmUser = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await UserService.createUser(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await UserService.loginUser(req);
@@ -57,5 +67,6 @@ export const UserController = {
   loginUser,
   userProfile,
   forgetPassword,
-  resetPassword
+  resetPassword,
+  confirmUser
 };

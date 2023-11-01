@@ -18,7 +18,8 @@ const createUser = z.object({
     role: z.enum([...roles] as [string, ...string[]], {
       required_error: 'Role is required'
     }),
-    token: z.string().optional()
+    token: z.string().optional(),
+    confirmedCode: z.string().optional()
   })
 });
 
